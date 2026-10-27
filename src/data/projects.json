@@ -15,8 +15,24 @@
         "Loads are meant to be safe to run again. A stable business key plus a row fingerprint (_row_hash) lets an unchanged record pass through without being applied twice. That habit matters more to me, at this stage, than claiming a cloud schedule I have not operated yet.",
         "The study references more than 182,000 records as the working volume for these patterns. The diagrams on this page are reference drawings. When a real SQL Server or terminal screenshot is ready, replace the file in public/img and keep the same image path."
       ],
-      "flow": ["Raw files", "Python clean", "Staging", "DQ checks", "SCD Type 2", "SQL answers"],
-      "tags": ["Python", "Pandas", "NumPy", "T-SQL", "SQL Server", "Star schema", "SCD Type 2", "Data quality"],
+      "flow": [
+        "Raw files",
+        "Python clean",
+        "Staging",
+        "DQ checks",
+        "SCD Type 2",
+        "SQL answers"
+      ],
+      "tags": [
+        "Python",
+        "Pandas",
+        "NumPy",
+        "T-SQL",
+        "SQL Server",
+        "Star schema",
+        "SCD Type 2",
+        "Data quality"
+      ],
       "image": "/img/architecture-pipeline.svg",
       "gallery": [
         {
@@ -60,8 +76,20 @@
         "The point of the project is habit: functions with clear inputs, basic data structures, simple object-oriented organization where it helps, and file I/O that tells you what it did. It is the same instinct I use at the front of an ETL flow.",
         "It is a practice project, not a product. When a utility grows into something worth showing line by line, the GitHub field below is the place to point at the repository."
       ],
-      "flow": ["Raw text", "Parse", "Validate rows", "Filter", "Write output"],
-      "tags": ["Python", "Data structures", "File I/O", "Error handling", "Data cleaning"],
+      "flow": [
+        "Raw text",
+        "Parse",
+        "Validate rows",
+        "Filter",
+        "Write output"
+      ],
+      "tags": [
+        "Python",
+        "Data structures",
+        "File I/O",
+        "Error handling",
+        "Data cleaning"
+      ],
       "image": "/img/terminal-workflow.svg",
       "gallery": [
         {
@@ -83,38 +111,54 @@
       "sql": ""
     },
     {
-      "slug": "relational-sql-lab",
-      "cap": "sql lab",
-      "title": "Relational Design & SQL Lab",
-      "meta": "Practice project · schema design · joins · aggregates",
-      "summary": "Hand-built schemas with real keys, then the joins, subqueries and aggregates that make the schema earn its keep.",
+      "slug": "peopleops-data-warehouse-pipeline",
+      "cap": "data engineering",
+      "title": "PeopleOps Data Engineering Pipeline & Analytics Warehouse",
+      "meta": "End-to-End Case Study · Python · T-SQL · Star Schema · 182k+ Records",
+      "summary": "An automated 6-stage HR and attendance data pipeline featuring SCD Type 2 tracking, financial leakage auditing, and robust data quality assertions.",
       "paragraphs": [
-        "This lab is where I design tables before I query them. Each schema starts with the entities, the primary keys and the foreign keys, and with a rule about what is allowed to be missing.",
-        "Once the tables exist, I write multi-table joins, subqueries and grouped aggregates against them. The exercise is to make the SQL match the question, and to notice when a question is hard because the model is wrong.",
-        "I use it as the companion to PeopleOps. The warehouse case study shows a dimensional pattern. This lab shows the relational ground under it: constraints, relationships and queries you can read out loud.",
-        "Nothing here is a client system. It is deliberate practice, documented so I can extend a schema without starting from a blank script every time."
+        "PeopleOps is an advanced data engineering case study designed to ingest messy, multi-source human resources and biometric attendance logs, transforming them into a production-ready analytical data warehouse.",
+        "The architecture flows through six explicit stages managed by Python and Microsoft SQL Server: raw extraction with programmatic row hashing for idempotency, staging cleanup, attendance rules engine, star schema dimensional modeling, executive CFO analytics, and automated data quality assertions.",
+        "By maintaining Slowly Changing Dimension (SCD) Type 2 tracking for employee histories and isolating rejected corrupt punches into dedicated audit logs, the pipeline ensures historical accuracy and data integrity across more than 182,000 processed records."
       ],
-      "flow": ["Entities", "Keys", "Constraints", "Joins", "Aggregates"],
-      "tags": ["SQL", "Schema design", "Joins", "Subqueries", "Aggregates", "Keys"],
-      "image": "/img/data-model-erd.svg",
+      "flow": [
+        "Raw Ingestion",
+        "Transform & Clean",
+        "Attendance Rules",
+        "Star Schema & SCD2",
+        "CFO Analytics",
+        "Data Quality Checks"
+      ],
+      "tags": [
+        "Python",
+        "Pandas",
+        "T-SQL",
+        "SQL Server",
+        "Star Schema",
+        "SCD Type 2",
+        "ETL Architecture",
+        "Data Quality"
+      ],
+      "image": "/img/hackatone1.png",
       "gallery": [
         {
-          "src": "/img/data-model-erd.svg",
-          "caption": "A relational picture of the practice model",
-          "note": "Reference diagram. Point image at your own ERD export when you have one."
+          "src": "/img/hackatanone2.png",
+          "caption": "Six-Stage Modular Script Workflow",
+          "note": "Step-by-step execution path from raw ingestion scripts to automated data quality checks."
         }
       ],
-      "github": "https://github.com/alizafarsec1",
+      "github": "https://github.com/alizafarsec1/smit_hackathons",
       "demo": "",
-      "icon": "schema",
+      "icon": "warehouse",
       "highlights": [
-        "Schemas designed with primary and foreign keys",
-        "Joins across more than two tables",
-        "Subqueries and analytical aggregates",
-        "Practice for the modeling stage of a pipeline"
+        "Processed 182,000+ daily attendance records seamlessly",
+        "100% idempotent loading using programmatic row hashing (_row_hash)",
+        "SCD Type 2 history tracking for employee department and attribute changes",
+        "Automated Financial Leakage Audits detecting post-separation payouts",
+        "Rigorous automated Data Quality assertions across all warehouse layers"
       ],
-      "sqlLabel": "SQL · the kind of question the lab is for",
-      "sql": "-- Which departments have more than one active employee\n-- with a missing hire date? Example names only.\nSELECT\n    d.department_name,\n    COUNT(*) AS employees_to_review\nFROM dbo.employee AS e\nINNER JOIN dbo.department AS d\n    ON d.department_id = e.department_id\nWHERE e.status = 'active'\n  AND e.hire_date IS NULL\nGROUP BY d.department_name\nHAVING COUNT(*) > 1\nORDER BY employees_to_review DESC;"
+      "sqlLabel": "T-SQL · CFO Financial Leakage Audit Query",
+      "sql": "-- Detect salary payments made after an employee's resignation date\nWITH SeparatedEmployees AS (\n    SELECT \n        employee_id,\n        resignation_date\n    FROM warehouse.dim_employee\n    WHERE resignation_date IS NOT NULL \n      AND is_current = 1\n)\nSELECT \n    p.employee_id,\n    p.pay_date,\n    p.net_salary,\n    e.resignation_date\nFROM raw_payroll AS p\nINNER JOIN SeparatedEmployees AS e \n    ON p.employee_id = e.employee_id\nWHERE p.pay_date > e.resignation_date\nORDER BY p.pay_date DESC;"
     }
   ]
 }
