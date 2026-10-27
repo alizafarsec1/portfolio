@@ -1,0 +1,192 @@
+{
+  "name": "Ali Zafar",
+  "logo": "ali.zafar",
+  "role": "Cloud Data Engineering Trainee",
+  "place": "Karachi, Pakistan",
+  "batch": "Saylani Mass IT Training · Batch 6",
+  "tagline": "I turn raw files into data you can trust.",
+  "headlineBefore": "I build the pipelines that make data ",
+  "headlineMark": "trustworthy",
+  "headlineAfter": ".",
+  "lede": "Cloud Data Engineering trainee at Saylani Mass IT Training in Karachi. I practice Python ETL, SQL warehousing and data-quality checks — including a PeopleOps study that references 182k+ records.",
+  "chips": ["Python", "Pandas", "SQL Server", "ETL", "Star schema", "Data quality"],
+  "email": "alizafar.sec1@gmail.com",
+  "phone": "+92 314 2376952",
+  "whatsapp": "https://wa.me/923142376952",
+  "github": "https://github.com/alizafarsec1",
+  "linkedin": "https://www.linkedin.com/in/ali-zafar-sec1/",
+  "resume": "/resume/Ali_Zafar_Resume.pdf",
+  "resumeName": "Ali_Zafar_Resume.pdf",
+  "portrait": "/img/ali-zafar-profile.jpg",
+  "portraitNote": "ali · karachi",
+  "screen": [
+    "> hey, who is ali zafar?",
+    "fetching profile ....... done",
+    "Cloud Data Engineering Trainee",
+    "Karachi · SMIT Batch 6",
+    "Python · SQL · ETL · data quality"
+  ],
+  "screenQuote": "Good data makes the right answer easier to find.",
+  "aboutEyebrow": "A little about me",
+  "aboutTitle": "I build data with purpose.",
+  "aboutLead": "I want to grow into a dependable data engineer: someone who can design a clean pipeline, keep the meaning of the data intact, and help people decide with confidence.",
+  "about": [
+    "I am studying Cloud Data Engineering at Saylani Mass IT Training (SMIT) in Karachi. The work is practical. Take a messy source, break it into steps a person can follow, and keep tightening those steps until the workflow is understandable and safe to run again.",
+    "The tools I spend the most time with are Python, Pandas, NumPy, Microsoft SQL Server and T-SQL, plus the ideas underneath them: ETL, data cleaning and analytical modeling. Python is how I inspect and reshape files. SQL is how I prove a rule, join the right tables and answer a real question.",
+    "My main case study, PeopleOps, is where those habits meet a business-shaped problem. Employee attributes change. Dates arrive in more than one format. Attendance and payroll-style events need a second look before anyone trusts a total. The study references more than 182,000 records and uses that volume to practice history-aware warehouse design and audit-friendly reporting.",
+    "A pipeline is not finished because it ran once. It should be safe to rerun, clear about what changed, and honest about the rows it refused. That is why I care about idempotent loads, row hashes, SCD Type 2 history, data-quality assertions and a rejection log — not only about moving a file from one folder to another.",
+    "SMIT is teaching me to stack those skills in order: get the model right, make the pipeline observable, then get ready for scheduling, monitoring and cloud operations. I write things down, I keep names consistent, and I would rather show a smaller true claim than a larger fuzzy one."
+  ],
+  "quote": "Good data engineering makes the right answer easier to find — and the wrong data harder to trust.",
+  "journeyTitle": "How I am growing",
+  "journeyIntro": "A practical path from solid fundamentals to reliable data systems.",
+  "journey": [
+    {
+      "title": "Understand the data",
+      "meta": "Python · Pandas · NumPy",
+      "text": "Inspect raw files, profile columns, handle missing values and learn what a field actually means before changing it."
+    },
+    {
+      "title": "Design clear SQL",
+      "meta": "SQL · T-SQL · keys",
+      "text": "Write readable queries, use primary and foreign keys, and shape tables so the next question is easier than the last."
+    },
+    {
+      "title": "Build repeatable ETL",
+      "meta": "Staging · checks · reruns",
+      "text": "Separate intake from transformation, record what a run did, and avoid reprocessing rows that did not change."
+    },
+    {
+      "title": "Keep history",
+      "meta": "Star schema · SCD Type 2",
+      "text": "Model facts and dimensions around business questions, and keep earlier versions of an employee explainable."
+    },
+    {
+      "title": "Prepare for the cloud",
+      "meta": "SMIT · operations",
+      "text": "Learn how a dependable pipeline is tested, scheduled, monitored and handed to someone else without a private notebook."
+    }
+  ],
+  "principles": [
+    { "mark": "01", "title": "Correct before fast", "text": "Understand the rule and prove the row is valid before tuning for speed." },
+    { "mark": "02", "title": "Safe to run again", "text": "Design loads that survive a retry and do not double-apply a change." },
+    { "mark": "03", "title": "Show the exception", "text": "Rejected rows need a reason. Invisible failures are not quality." },
+    { "mark": "04", "title": "Model the question", "text": "Tables should serve the decision someone actually has to make." }
+  ],
+  "stats": [
+    { "value": "182k+", "label": "Records referenced in project work" },
+    { "value": "6", "label": "Stages in the practice pipeline" },
+    { "value": "SCD2", "label": "History-aware modeling pattern" },
+    { "value": "DQ", "label": "Checks and rejection audits first" }
+  ],
+  "pipelineTitle": "Follow the data.",
+  "pipelineNote": "this is the shape of the work I practice. tap a stage, or run the whole thing.",
+  "pipeline": [
+    {
+      "id": "ingest",
+      "title": "Ingest",
+      "sub": "land the file",
+      "text": "Identify the source file, note its shape, and capture which batch it belongs to before anything is “fixed”. If the intake is fuzzy, every later number is fuzzy too."
+    },
+    {
+      "id": "clean",
+      "title": "Clean",
+      "sub": "make it comparable",
+      "text": "Standardize dates and text, deal with missing values, and flag duplicates. Python and Pandas are the workbench here: look, transform, and keep a record of what changed."
+    },
+    {
+      "id": "model",
+      "title": "Model",
+      "sub": "facts & dimensions",
+      "text": "Move from a flat file toward a star schema. Facts hold events such as attendance. Dimensions hold the context — employee, department, date — that makes an event mean something."
+    },
+    {
+      "id": "validate",
+      "title": "Validate",
+      "sub": "assertions",
+      "text": "Run explicit checks: missing keys, impossible dates, duplicate business keys. Failures go to a rejection log with a reason and a run id, so bad data stays visible."
+    },
+    {
+      "id": "load",
+      "title": "Load",
+      "sub": "safe to rerun",
+      "text": "Load with stable keys and a row hash so an unchanged record is not rewritten. Employee changes that matter to history follow an SCD Type 2 pattern instead of a silent overwrite."
+    },
+    {
+      "id": "explain",
+      "title": "Explain",
+      "sub": "SQL people can read",
+      "text": "Answer a business question in SQL that another person can audit. The goal is a number you can trace back to a source row, not a dashboard that only looks finished."
+    }
+  ],
+  "workTitle": "Where I am learning.",
+  "workNote": "training and practice, written the way I would explain it in an interview.",
+  "work": [
+    {
+      "org": "Saylani Mass IT Training",
+      "role": "Cloud Data Engineering Trainee",
+      "when": "Ongoing · Karachi · Batch 6",
+      "current": true,
+      "badge": "in progress",
+      "points": [
+        "Hands-on Python and SQL, aimed at pipelines rather than one-off scripts.",
+        "Studying cloud data ideas alongside modeling: how a workflow would be scheduled, observed and trusted.",
+        "Building portfolio case studies that show the data path, not only the final query."
+      ]
+    },
+    {
+      "org": "PeopleOps case study",
+      "role": "Warehouse & quality practice",
+      "when": "Portfolio project",
+      "current": false,
+      "badge": "",
+      "points": [
+        "Six-stage flow from raw HR-style files toward a dimensional model.",
+        "SCD Type 2 style history, row hashes and rejection audits as first-class design, not afterthoughts.",
+        "Reference volume of 182k+ records. Diagrams are labeled as reference visuals until live screenshots replace them."
+      ]
+    },
+    {
+      "org": "Intermediate in Computer Science",
+      "role": "ICS · Karachi",
+      "when": "Computer Science, Mathematics, Physics",
+      "current": false,
+      "badge": "",
+      "points": [
+        "Foundations in algorithmic thinking and how a program is structured.",
+        "The habit of checking a result instead of trusting the first output.",
+        "The base I am extending now into data engineering."
+      ]
+    }
+  ],
+  "skillsTitle": "What is in the tanks.",
+  "skillsNote": "fill level is how deep I go today — not a certificate, a practice level.",
+  "skills": [
+    { "name": "Python", "level": "Practicing", "blurb": "core, OOP, file I/O", "fill": 0.62 },
+    { "name": "Pandas", "level": "Practicing", "blurb": "clean and reshape tables", "fill": 0.56 },
+    { "name": "NumPy", "level": "Learning", "blurb": "arrays and numeric checks", "fill": 0.38 },
+    { "name": "SQL", "level": "Comfortable", "blurb": "joins, subqueries, aggregates", "fill": 0.74 },
+    { "name": "T-SQL", "level": "Practicing", "blurb": "SQL Server patterns", "fill": 0.55 },
+    { "name": "SQL Server", "level": "Practicing", "blurb": "schemas and loads", "fill": 0.52 },
+    { "name": "PostgreSQL", "level": "Learning", "blurb": "relational practice", "fill": 0.36 },
+    { "name": "ETL", "level": "Practicing", "blurb": "staging, loads, reruns", "fill": 0.6 },
+    { "name": "Star schema", "level": "Practicing", "blurb": "facts and dimensions", "fill": 0.5 },
+    { "name": "SCD Type 2", "level": "Practicing", "blurb": "effective dates, current row", "fill": 0.48 },
+    { "name": "Data quality", "level": "Practicing", "blurb": "assertions and rejects", "fill": 0.58 },
+    { "name": "Git & GitHub", "level": "Practicing", "blurb": "versioned project work", "fill": 0.46 }
+  ],
+  "stampsTitle": "Stamped by practice.",
+  "stampsNote": "tap a stamp. these are study areas, not vendor certificates.",
+  "stamps": [
+    { "code": "PY", "name": "Python for data files" },
+    { "code": "SQL", "name": "Multi-table querying" },
+    { "code": "ETL", "name": "Repeatable pipelines" },
+    { "code": "SCD", "name": "History-aware models" },
+    { "code": "DQ", "name": "Visible data quality" }
+  ],
+  "education": [
+    { "title": "Cloud Data Engineering", "place": "Saylani Mass IT Training (SMIT), Karachi", "meta": "Ongoing · Batch 6" },
+    { "title": "Intermediate in Computer Science", "place": "Karachi, Pakistan", "meta": "ICS · CS, Maths, Physics" }
+  ],
+  "words": ["SELECT", "JOIN", "SCD2", "ETL", "ROW_HASH", "STAGING", "PANDAS", "GROUP BY", "REJECT", "WAREHOUSE"]
+}

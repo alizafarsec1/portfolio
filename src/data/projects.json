@@ -1,0 +1,120 @@
+{
+  "_readme": "ADD A PROJECT: copy one object inside projects. Put the cover image in public/img (for example public/img/my-cover.png) and set image to /img/my-cover.png. slug is the page address: /projects/your-slug. Use lowercase letters and hyphens, and keep slug unique. github and demo can be empty strings. gallery items are optional extra images. After you save, publish or push again so the live site rebuilds.",
+  "projects": [
+    {
+      "slug": "peopleops-warehouse",
+      "cap": "peopleops",
+      "title": "PeopleOps Data Warehouse",
+      "meta": "Practice case study · Python · T-SQL · 182k+ records",
+      "summary": "A six-stage HR and attendance pipeline: clean the files, keep employee history, and make rejected rows visible instead of silent.",
+      "paragraphs": [
+        "PeopleOps is my main data-engineering case study. It treats HR and attendance data the way an operations team actually receives it: more than one file, inconsistent dates, attributes that change, and questions that need an answer you can defend.",
+        "I split the work into six stages so the path stays readable. Python and Pandas handle intake, light standardization and run context. SQL Server is where the model, the history and the checks live. The goal is a workflow another person could follow without asking me to narrate the notebook.",
+        "The warehouse shape is a star schema. Attendance and payroll-style events are facts. Employee, department and date are dimensions. Employee history follows an SCD Type 2 idea — effective-from, effective-to and a current-row flag — so a report can ask both “what is true now?” and “what was true then?”",
+        "Quality checks are part of the design. Typical rules are missing employee identifiers, impossible dates, duplicate business keys and events that fall outside an active window. A failed row is written to a rejection log with the reason and the run that saw it.",
+        "Loads are meant to be safe to run again. A stable business key plus a row fingerprint (_row_hash) lets an unchanged record pass through without being applied twice. That habit matters more to me, at this stage, than claiming a cloud schedule I have not operated yet.",
+        "The study references more than 182,000 records as the working volume for these patterns. The diagrams on this page are reference drawings. When a real SQL Server or terminal screenshot is ready, replace the file in public/img and keep the same image path."
+      ],
+      "flow": ["Raw files", "Python clean", "Staging", "DQ checks", "SCD Type 2", "SQL answers"],
+      "tags": ["Python", "Pandas", "NumPy", "T-SQL", "SQL Server", "Star schema", "SCD Type 2", "Data quality"],
+      "image": "/img/architecture-pipeline.svg",
+      "gallery": [
+        {
+          "src": "/img/architecture-pipeline.svg",
+          "caption": "Six-stage reference architecture",
+          "note": "Reference drawing. Replace with a screenshot from your own pipeline when you have one."
+        },
+        {
+          "src": "/img/data-model-erd.svg",
+          "caption": "Illustrative star schema",
+          "note": "Facts for attendance and payroll-style events, with employee, date and department context."
+        },
+        {
+          "src": "/img/terminal-workflow.svg",
+          "caption": "Illustrative ETL run summary",
+          "note": "A design mock of a terminal summary. Swap in a real VS Code or terminal capture later."
+        }
+      ],
+      "github": "https://github.com/alizafarsec1",
+      "demo": "",
+      "icon": "warehouse",
+      "highlights": [
+        "Pipeline: Python intake plus T-SQL warehouse logic",
+        "Model: dimensional / star schema",
+        "History: SCD Type 2 style effective dates",
+        "Reliability: idempotent loads and a rejection audit",
+        "Volume referenced: 182k+ records"
+      ],
+      "sqlLabel": "T-SQL · example audit, not a production script",
+      "sql": "-- Example only. Rename tables and columns to match the real schema.\nSELECT\n    e.employee_id,\n    e.employee_name,\n    e.separation_date,\n    p.pay_period_end,\n    p.net_pay,\n    p.payment_reference\nFROM dbo.dim_employee AS e\nINNER JOIN dbo.fact_payroll AS p\n    ON p.employee_key = e.employee_key\nWHERE e.separation_date IS NOT NULL\n  AND p.pay_period_end > e.separation_date\n  AND p.net_pay > 0\nORDER BY\n    e.employee_id,\n    p.pay_period_end DESC;"
+    },
+    {
+      "slug": "python-data-utilities",
+      "cap": "python tools",
+      "title": "Python Data Utilities",
+      "meta": "Practice project · Python · file I/O · data cleaning",
+      "summary": "Small command-line tools that read messy text, filter records, and write a cleaner file — with errors handled on purpose.",
+      "paragraphs": [
+        "Before a warehouse is useful, someone has to look at the file. These utilities are small Python command-line tools I wrote to filter and reshape mock structured data without opening a spreadsheet and hoping.",
+        "Each script reads from disk, checks that the file is actually there, and refuses to crash on a blank line or a short row. Bad records are reported. Good records are written out in a consistent shape.",
+        "The point of the project is habit: functions with clear inputs, basic data structures, simple object-oriented organization where it helps, and file I/O that tells you what it did. It is the same instinct I use at the front of an ETL flow.",
+        "It is a practice project, not a product. When a utility grows into something worth showing line by line, the GitHub field below is the place to point at the repository."
+      ],
+      "flow": ["Raw text", "Parse", "Validate rows", "Filter", "Write output"],
+      "tags": ["Python", "Data structures", "File I/O", "Error handling", "Data cleaning"],
+      "image": "/img/terminal-workflow.svg",
+      "gallery": [
+        {
+          "src": "/img/terminal-workflow.svg",
+          "caption": "What a small run should look like",
+          "note": "Illustrative terminal drawing. Replace with a real run when you publish the repository."
+        }
+      ],
+      "github": "https://github.com/alizafarsec1",
+      "demo": "",
+      "icon": "terminal",
+      "highlights": [
+        "Command-line Python, not a notebook-only demo",
+        "Row-level error handling instead of a silent skip",
+        "File in, cleaner file out",
+        "A warm-up for the ingest stage of larger pipelines"
+      ],
+      "sqlLabel": "",
+      "sql": ""
+    },
+    {
+      "slug": "relational-sql-lab",
+      "cap": "sql lab",
+      "title": "Relational Design & SQL Lab",
+      "meta": "Practice project · schema design · joins · aggregates",
+      "summary": "Hand-built schemas with real keys, then the joins, subqueries and aggregates that make the schema earn its keep.",
+      "paragraphs": [
+        "This lab is where I design tables before I query them. Each schema starts with the entities, the primary keys and the foreign keys, and with a rule about what is allowed to be missing.",
+        "Once the tables exist, I write multi-table joins, subqueries and grouped aggregates against them. The exercise is to make the SQL match the question, and to notice when a question is hard because the model is wrong.",
+        "I use it as the companion to PeopleOps. The warehouse case study shows a dimensional pattern. This lab shows the relational ground under it: constraints, relationships and queries you can read out loud.",
+        "Nothing here is a client system. It is deliberate practice, documented so I can extend a schema without starting from a blank script every time."
+      ],
+      "flow": ["Entities", "Keys", "Constraints", "Joins", "Aggregates"],
+      "tags": ["SQL", "Schema design", "Joins", "Subqueries", "Aggregates", "Keys"],
+      "image": "/img/data-model-erd.svg",
+      "gallery": [
+        {
+          "src": "/img/data-model-erd.svg",
+          "caption": "A relational picture of the practice model",
+          "note": "Reference diagram. Point image at your own ERD export when you have one."
+        }
+      ],
+      "github": "https://github.com/alizafarsec1",
+      "demo": "",
+      "icon": "schema",
+      "highlights": [
+        "Schemas designed with primary and foreign keys",
+        "Joins across more than two tables",
+        "Subqueries and analytical aggregates",
+        "Practice for the modeling stage of a pipeline"
+      ],
+      "sqlLabel": "SQL · the kind of question the lab is for",
+      "sql": "-- Which departments have more than one active employee\n-- with a missing hire date? Example names only.\nSELECT\n    d.department_name,\n    COUNT(*) AS employees_to_review\nFROM dbo.employee AS e\nINNER JOIN dbo.department AS d\n    ON d.department_id = e.department_id\nWHERE e.status = 'active'\n  AND e.hire_date IS NULL\nGROUP BY d.department_name\nHAVING COUNT(*) > 1\nORDER BY employees_to_review DESC;"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Ali Zafar · Cloud Data Engineer",
+      "hasCanvas": false,
+      "bodyTextLen": 8616,
+      "bodyTextHash": "537a16406a3b70b3ba8bcdd0a16d5e8f116c18d60423dae3bb838bdb981a0f4f",
+      "bodyTextPrefix": "ali.zafar. about flow work projects skills resume say hi somewhe",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Ali Zafar · Cloud Data Engineer",
+      "hasCanvas": false,
+      "bodyTextLen": 8570,
+      "bodyTextHash": "1b967bd11a69d28fd66bb69157a38e979e5ca1902b2916cea9d5c4fd8c5a989c",
+      "bodyTextPrefix": "ali.zafar. somewhere, a team is looking for someone who will not",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

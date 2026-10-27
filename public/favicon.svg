@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Ali Zafar">
+  <rect width="32" height="32" rx="7" fill="#F6F7F9"/>
+  <rect x="1.75" y="1.75" width="28.5" height="28.5" rx="6" fill="none" stroke="#2346E8" stroke-width="2.5"/>
+  <rect x="4.5" y="13.25" width="23" height="6.5" fill="#FFD23F"/>
+  <path d="M6.6 25.2 L11 7.2 L15.4 25.2 M7.9 18.1 H14.1" fill="none" stroke="#16181D" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17.4 8 H25.4 L17.4 24.4 H25.4" fill="none" stroke="#16181D" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
