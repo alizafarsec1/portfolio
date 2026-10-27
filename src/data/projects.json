@@ -1,5 +1,4 @@
 {
-  "_readme": "ADD A PROJECT: copy one object inside projects. Put the cover image in public/img (for example public/img/my-cover.png) and set image to /img/my-cover.png. slug is the page address: /projects/your-slug. Use lowercase letters and hyphens, and keep slug unique. github and demo can be empty strings. gallery items are optional extra images. After you save, publish or push again so the live site rebuilds.",
   "projects": [
     {
       "slug": "peopleops-warehouse",
@@ -63,52 +62,6 @@
       ],
       "sqlLabel": "T-SQL · example audit, not a production script",
       "sql": "-- Example only. Rename tables and columns to match the real schema.\nSELECT\n    e.employee_id,\n    e.employee_name,\n    e.separation_date,\n    p.pay_period_end,\n    p.net_pay,\n    p.payment_reference\nFROM dbo.dim_employee AS e\nINNER JOIN dbo.fact_payroll AS p\n    ON p.employee_key = e.employee_key\nWHERE e.separation_date IS NOT NULL\n  AND p.pay_period_end > e.separation_date\n  AND p.net_pay > 0\nORDER BY\n    e.employee_id,\n    p.pay_period_end DESC;"
-    },
-    {
-      "slug": "python-data-utilities",
-      "cap": "python tools",
-      "title": "Python Data Utilities",
-      "meta": "Practice project · Python · file I/O · data cleaning",
-      "summary": "Small command-line tools that read messy text, filter records, and write a cleaner file — with errors handled on purpose.",
-      "paragraphs": [
-        "Before a warehouse is useful, someone has to look at the file. These utilities are small Python command-line tools I wrote to filter and reshape mock structured data without opening a spreadsheet and hoping.",
-        "Each script reads from disk, checks that the file is actually there, and refuses to crash on a blank line or a short row. Bad records are reported. Good records are written out in a consistent shape.",
-        "The point of the project is habit: functions with clear inputs, basic data structures, simple object-oriented organization where it helps, and file I/O that tells you what it did. It is the same instinct I use at the front of an ETL flow.",
-        "It is a practice project, not a product. When a utility grows into something worth showing line by line, the GitHub field below is the place to point at the repository."
-      ],
-      "flow": [
-        "Raw text",
-        "Parse",
-        "Validate rows",
-        "Filter",
-        "Write output"
-      ],
-      "tags": [
-        "Python",
-        "Data structures",
-        "File I/O",
-        "Error handling",
-        "Data cleaning"
-      ],
-      "image": "/img/terminal-workflow.svg",
-      "gallery": [
-        {
-          "src": "/img/terminal-workflow.svg",
-          "caption": "What a small run should look like",
-          "note": "Illustrative terminal drawing. Replace with a real run when you publish the repository."
-        }
-      ],
-      "github": "https://github.com/alizafarsec1",
-      "demo": "",
-      "icon": "terminal",
-      "highlights": [
-        "Command-line Python, not a notebook-only demo",
-        "Row-level error handling instead of a silent skip",
-        "File in, cleaner file out",
-        "A warm-up for the ingest stage of larger pipelines"
-      ],
-      "sqlLabel": "",
-      "sql": ""
     },
     {
       "slug": "peopleops-data-warehouse-pipeline",
